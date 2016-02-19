@@ -210,10 +210,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
+     <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+     <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -224,7 +227,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -302,10 +305,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
+     <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+     <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -316,7 +323,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -335,44 +342,9 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th>HTML/CSS</th>
-      <td>20581506</td>
-      <td>62</td>
-    </tr>
-    <tr>
-      <th>PHP</th>
-      <td>26411375</td>
-      <td>220</td>
-    </tr>
-    <tr>
-      <th>Python</th>
-      <td>28061166</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>JavaScript</th>
-      <td>28651076</td>
-      <td>228</td>
-    </tr>
-    <tr>
-      <th>PL/SQL</th>
-      <td>30960363</td>
+      <th>Cobol</th>
+      <td>45352727</td>
       <td>11</td>
-    </tr>
-    <tr>
-      <th>Objective-C</th>
-      <td>31604633</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>Ruby</th>
-      <td>33235530</td>
-      <td>52</td>
-    </tr>
-    <tr>
-      <th>Java</th>
-      <td>39745487</td>
-      <td>314</td>
     </tr>
     <tr>
       <th>C#</th>
@@ -380,9 +352,44 @@ div#notebook {
       <td>200</td>
     </tr>
     <tr>
-      <th>Cobol</th>
-      <td>45352727</td>
+      <th>Java</th>
+      <td>39745487</td>
+      <td>314</td>
+    </tr>
+    <tr>
+      <th>Ruby</th>
+      <td>33235530</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>Objective-C</th>
+      <td>31604633</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>PL/SQL</th>
+      <td>30960363</td>
       <td>11</td>
+    </tr>
+    <tr>
+      <th>JavaScript</th>
+      <td>28651076</td>
+      <td>228</td>
+    </tr>
+    <tr>
+      <th>Python</th>
+      <td>28061166</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>PHP</th>
+      <td>26411375</td>
+      <td>220</td>
+    </tr>
+    <tr>
+      <th>HTML/CSS</th>
+      <td>20581506</td>
+      <td>62</td>
     </tr>
   </tbody>
 </table>
