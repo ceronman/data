@@ -182,7 +182,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[162]:</div>
+<div class="prompt input_prompt">In&nbsp;[184]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -203,7 +203,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[163]:</div>
+<div class="prompt input_prompt">In&nbsp;[185]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">col_salary</span> <span class="o">=</span> <span class="s1">&#39;salary_normalized&#39;</span>
@@ -216,10 +216,8 @@ div#notebook {
     <span class="k">return</span> <span class="n">sal</span> <span class="o">//</span> <span class="mi">12</span>
 
 <span class="n">data</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalize_salaries</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Extremely high (gt USD 25M+) and low (lt USD 10K) salaries.</span>
-<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">468</span><span class="p">,</span> <span class="mi">306</span><span class="p">,</span> <span class="mi">1114</span><span class="p">,</span> <span class="mi">274</span><span class="p">,</span> <span class="mi">926</span><span class="p">,</span> <span class="mi">489</span><span class="p">,</span> <span class="mi">357</span><span class="p">,</span> <span class="mi">826</span><span class="p">,</span>
-           <span class="mi">911</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">553</span><span class="p">,</span> <span class="mi">567</span><span class="p">,</span> <span class="mi">403</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">796</span><span class="p">,</span> <span class="mi">776</span><span class="p">,</span> <span class="mi">252</span><span class="p">,</span> <span class="mi">741</span><span class="p">,</span> <span class="mi">124</span><span class="p">,</span> <span class="mi">978</span><span class="p">,</span> <span class="mi">318</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100000000</span><span class="p">]</span> <span class="c1"># Remove salaries greater than USD 500K</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">]</span>  <span class="c1"># Remove salaries smaller than USD 10K</span>
 </pre></div>
 
 </div>
@@ -238,7 +236,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[164]:</div>
+<div class="prompt input_prompt">In&nbsp;[186]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)[</span><span class="n">col_salary</span><span class="p">]</span>
@@ -255,7 +253,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[164]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[186]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -273,31 +271,31 @@ div#notebook {
   <tbody>
     <tr>
       <th>Java</th>
-      <td>313</td>
+      <td>270</td>
     </tr>
     <tr>
       <th>JavaScript</th>
-      <td>218</td>
+      <td>195</td>
     </tr>
     <tr>
       <th>PHP</th>
-      <td>216</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>C#</th>
-      <td>199</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>HTML/CSS</th>
-      <td>59</td>
+      <td>51</td>
     </tr>
     <tr>
       <th>Ruby</th>
-      <td>52</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>Python</th>
-      <td>36</td>
+      <td>33</td>
     </tr>
     <tr>
       <th>Objective-C</th>
@@ -308,8 +306,8 @@ div#notebook {
       <td>11</td>
     </tr>
     <tr>
-      <th>Cobol</th>
-      <td>11</td>
+      <th>Scala</th>
+      <td>9</td>
     </tr>
   </tbody>
 </table>
@@ -333,7 +331,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[165]:</div>
+<div class="prompt input_prompt">In&nbsp;[187]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)[</span><span class="n">col_salary</span><span class="p">]</span>
@@ -351,7 +349,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[165]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[187]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -371,43 +369,43 @@ div#notebook {
   <tbody>
     <tr>
       <th>Ruby</th>
-      <td>9168748</td>
-      <td>52</td>
+      <td>9912932</td>
+      <td>48</td>
     </tr>
     <tr>
       <th>Objective-C</th>
-      <td>6468127</td>
+      <td>6612778</td>
       <td>17</td>
     </tr>
     <tr>
       <th>Python</th>
-      <td>4525888</td>
-      <td>36</td>
+      <td>4923015</td>
+      <td>33</td>
     </tr>
     <tr>
       <th>JavaScript</th>
-      <td>4375548</td>
-      <td>218</td>
-    </tr>
-    <tr>
-      <th>Cobol</th>
-      <td>3779393</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>C#</th>
-      <td>3683063</td>
-      <td>199</td>
+      <td>4886245</td>
+      <td>195</td>
     </tr>
     <tr>
       <th>Java</th>
-      <td>3592915</td>
-      <td>313</td>
+      <td>4136940</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <th>C#</th>
+      <td>3971098</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>PHP</th>
-      <td>2581675</td>
-      <td>216</td>
+      <td>3005941</td>
+      <td>184</td>
+    </tr>
+    <tr>
+      <th>Scala</th>
+      <td>2987777</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>PL/SQL</th>
@@ -416,8 +414,8 @@ div#notebook {
     </tr>
     <tr>
       <th>HTML/CSS</th>
-      <td>2027562</td>
-      <td>59</td>
+      <td>2330065</td>
+      <td>51</td>
     </tr>
   </tbody>
 </table>
@@ -441,7 +439,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[166]:</div>
+<div class="prompt input_prompt">In&nbsp;[191]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_currency</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pesos&#39;</span><span class="p">]</span>
@@ -460,7 +458,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[166]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[191]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -480,38 +478,43 @@ div#notebook {
   <tbody>
     <tr>
       <th>Ruby</th>
-      <td>4232980</td>
-      <td>34</td>
-    </tr>
-    <tr>
-      <th>Objective-C</th>
-      <td>3948958</td>
-      <td>12</td>
+      <td>4765572</td>
+      <td>30</td>
     </tr>
     <tr>
       <th>Cobol</th>
-      <td>3779393</td>
+      <td>4563333</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Objective-C</th>
+      <td>4292802</td>
       <td>11</td>
     </tr>
     <tr>
-      <th>C#</th>
-      <td>3538389</td>
-      <td>194</td>
+      <th>Java</th>
+      <td>3899920</td>
+      <td>264</td>
     </tr>
     <tr>
-      <th>Java</th>
-      <td>3376560</td>
-      <td>308</td>
+      <th>C#</th>
+      <td>3839897</td>
+      <td>178</td>
     </tr>
     <tr>
       <th>JavaScript</th>
-      <td>2785739</td>
-      <td>191</td>
+      <td>3191243</td>
+      <td>165</td>
     </tr>
     <tr>
       <th>Python</th>
-      <td>2714838</td>
-      <td>31</td>
+      <td>2988839</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>PHP</th>
+      <td>2667373</td>
+      <td>175</td>
     </tr>
     <tr>
       <th>PL/SQL</th>
@@ -519,14 +522,9 @@ div#notebook {
       <td>11</td>
     </tr>
     <tr>
-      <th>PHP</th>
-      <td>2274917</td>
-      <td>208</td>
-    </tr>
-    <tr>
       <th>HTML/CSS</th>
-      <td>1816943</td>
-      <td>56</td>
+      <td>2136113</td>
+      <td>47</td>
     </tr>
   </tbody>
 </table>
@@ -541,10 +539,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[167]:</div>
+<div class="prompt input_prompt">In&nbsp;[189]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_currency</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dolares&#39;</span><span class="p">][[</span><span class="n">col_raw_salary</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">col_raw_salary</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_currency</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pesos&#39;</span><span class="p">][[</span><span class="n">col_raw_salary</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">col_raw_salary</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -555,7 +553,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[167]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[189]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -568,252 +566,252 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th>1048</th>
-      <td>10404</td>
+      <th>377</th>
+      <td>6500000</td>
     </tr>
     <tr>
-      <th>550</th>
-      <td>12000</td>
+      <th>501</th>
+      <td>7000000</td>
     </tr>
     <tr>
-      <th>1041</th>
-      <td>12000</td>
+      <th>1014</th>
+      <td>7000000</td>
     </tr>
     <tr>
-      <th>456</th>
-      <td>15000</td>
+      <th>918</th>
+      <td>7000000</td>
     </tr>
     <tr>
-      <th>1279</th>
-      <td>15000</td>
+      <th>905</th>
+      <td>7200000</td>
     </tr>
     <tr>
-      <th>655</th>
-      <td>17000</td>
+      <th>777</th>
+      <td>7732200</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>18000</td>
+      <th>607</th>
+      <td>7734000</td>
     </tr>
     <tr>
-      <th>406</th>
-      <td>20000</td>
+      <th>1050</th>
+      <td>8000000</td>
     </tr>
     <tr>
-      <th>1158</th>
-      <td>20000</td>
+      <th>504</th>
+      <td>8000000</td>
     </tr>
     <tr>
-      <th>399</th>
-      <td>21600</td>
+      <th>1055</th>
+      <td>8100000</td>
     </tr>
     <tr>
-      <th>37</th>
-      <td>21600</td>
+      <th>977</th>
+      <td>8256000</td>
     </tr>
     <tr>
-      <th>1278</th>
-      <td>24000</td>
+      <th>969</th>
+      <td>8280000</td>
     </tr>
     <tr>
-      <th>175</th>
-      <td>24000</td>
+      <th>914</th>
+      <td>8400000</td>
     </tr>
     <tr>
-      <th>486</th>
-      <td>24000</td>
+      <th>865</th>
+      <td>8400000</td>
     </tr>
     <tr>
-      <th>164</th>
-      <td>24000</td>
+      <th>886</th>
+      <td>8400000</td>
     </tr>
     <tr>
-      <th>1211</th>
-      <td>25000</td>
+      <th>837</th>
+      <td>8600000</td>
     </tr>
     <tr>
-      <th>927</th>
-      <td>25000</td>
+      <th>850</th>
+      <td>8600000</td>
     </tr>
     <tr>
-      <th>33</th>
-      <td>26000</td>
+      <th>166</th>
+      <td>8616000</td>
     </tr>
     <tr>
-      <th>1233</th>
-      <td>28000</td>
+      <th>968</th>
+      <td>8760000</td>
     </tr>
     <tr>
-      <th>867</th>
-      <td>28800</td>
+      <th>1205</th>
+      <td>9000000</td>
     </tr>
     <tr>
-      <th>540</th>
-      <td>28900</td>
+      <th>893</th>
+      <td>9000000</td>
     </tr>
     <tr>
-      <th>572</th>
-      <td>30000</td>
+      <th>707</th>
+      <td>9000000</td>
     </tr>
     <tr>
-      <th>442</th>
-      <td>30000</td>
+      <th>386</th>
+      <td>9000000</td>
     </tr>
     <tr>
-      <th>1081</th>
-      <td>30000</td>
+      <th>811</th>
+      <td>9000000</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>33000</td>
+      <th>849</th>
+      <td>9140000</td>
     </tr>
     <tr>
-      <th>879</th>
-      <td>34000</td>
+      <th>248</th>
+      <td>9300000</td>
     </tr>
     <tr>
-      <th>35</th>
-      <td>36000</td>
+      <th>870</th>
+      <td>9600000</td>
     </tr>
     <tr>
-      <th>68</th>
-      <td>36000</td>
+      <th>617</th>
+      <td>9600000</td>
     </tr>
     <tr>
-      <th>278</th>
-      <td>38400</td>
+      <th>666</th>
+      <td>9600000</td>
     </tr>
     <tr>
-      <th>338</th>
-      <td>40000</td>
+      <th>441</th>
+      <td>9600000</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
     </tr>
     <tr>
-      <th>771</th>
-      <td>60000</td>
+      <th>1083</th>
+      <td>108000000</td>
     </tr>
     <tr>
-      <th>296</th>
-      <td>60000</td>
+      <th>241</th>
+      <td>108000000</td>
     </tr>
     <tr>
-      <th>265</th>
-      <td>60000</td>
+      <th>838</th>
+      <td>108000000</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>60000</td>
+      <th>635</th>
+      <td>110000000</td>
     </tr>
     <tr>
-      <th>143</th>
-      <td>60000</td>
+      <th>726</th>
+      <td>110000000</td>
     </tr>
     <tr>
-      <th>332</th>
-      <td>63360</td>
+      <th>321</th>
+      <td>110000000</td>
     </tr>
     <tr>
-      <th>578</th>
-      <td>65000</td>
+      <th>89</th>
+      <td>110400000</td>
     </tr>
     <tr>
-      <th>63</th>
-      <td>65000</td>
+      <th>648</th>
+      <td>113400000</td>
     </tr>
     <tr>
-      <th>208</th>
-      <td>67200</td>
+      <th>1</th>
+      <td>117600000</td>
     </tr>
     <tr>
-      <th>309</th>
-      <td>70000</td>
+      <th>557</th>
+      <td>120000000</td>
     </tr>
     <tr>
-      <th>52</th>
-      <td>70000</td>
+      <th>1134</th>
+      <td>120000000</td>
     </tr>
     <tr>
-      <th>445</th>
-      <td>78000</td>
+      <th>412</th>
+      <td>120000000</td>
     </tr>
     <tr>
-      <th>524</th>
-      <td>80000</td>
+      <th>95</th>
+      <td>120000000</td>
     </tr>
     <tr>
-      <th>1148</th>
-      <td>80000</td>
+      <th>1240</th>
+      <td>120000000</td>
     </tr>
     <tr>
-      <th>190</th>
-      <td>80800</td>
+      <th>1072</th>
+      <td>124000000</td>
     </tr>
     <tr>
-      <th>0</th>
-      <td>81600</td>
+      <th>205</th>
+      <td>126000000</td>
     </tr>
     <tr>
-      <th>730</th>
-      <td>84000</td>
+      <th>831</th>
+      <td>126000000</td>
     </tr>
     <tr>
-      <th>65</th>
-      <td>85000</td>
+      <th>253</th>
+      <td>132000000</td>
     </tr>
     <tr>
-      <th>768</th>
-      <td>95000</td>
+      <th>789</th>
+      <td>132000000</td>
     </tr>
     <tr>
-      <th>100</th>
-      <td>95000</td>
+      <th>760</th>
+      <td>140000000</td>
     </tr>
     <tr>
-      <th>78</th>
-      <td>96000</td>
+      <th>1091</th>
+      <td>144000000</td>
     </tr>
     <tr>
-      <th>1288</th>
-      <td>96000</td>
+      <th>77</th>
+      <td>150000000</td>
     </tr>
     <tr>
-      <th>326</th>
-      <td>108000</td>
+      <th>641</th>
+      <td>150000000</td>
     </tr>
     <tr>
-      <th>254</th>
-      <td>108000</td>
+      <th>1151</th>
+      <td>150000000</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>108000</td>
+      <th>494</th>
+      <td>160000000</td>
     </tr>
     <tr>
-      <th>819</th>
-      <td>115000</td>
+      <th>507</th>
+      <td>162000000</td>
     </tr>
     <tr>
-      <th>422</th>
-      <td>120000</td>
+      <th>1034</th>
+      <td>168000000</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>120000</td>
+      <th>413</th>
+      <td>200000000</td>
     </tr>
     <tr>
-      <th>1268</th>
-      <td>130000</td>
+      <th>523</th>
+      <td>218000000</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>130000</td>
+      <th>1276</th>
+      <td>264000000</td>
     </tr>
   </tbody>
 </table>
-<p>83 rows × 1 columns</p>
+<p>1031 rows × 1 columns</p>
 </div>
 </div>
 
