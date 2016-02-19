@@ -182,7 +182,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[95]:</div>
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -203,7 +203,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="n">col_salary</span> <span class="o">=</span> <span class="s1">&#39;salary_normalized&#39;</span>
@@ -234,12 +234,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[97]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">by_language</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)</span>
-
-<span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)[</span><span class="n">col_salary</span><span class="p">]</span>
      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
      <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
      <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
@@ -253,7 +251,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[97]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[103]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -331,10 +329,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)[</span><span class="n">col_salary</span><span class="p">]</span>
      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
      <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
      <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -349,7 +347,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[98]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[104]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -416,6 +414,115 @@ div#notebook {
       <th>PL/SQL</th>
       <td>2580030</td>
       <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Top-10-lenguajes-ordenados-por-salarios-s&#243;lo-en-pesos">Top 10 lenguajes ordenados por salarios s&#243;lo en pesos<a class="anchor-link" href="#Top-10-lenguajes-ordenados-por-salarios-s&#243;lo-en-pesos">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">col_currency</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;pesos&#39;</span><span class="p">]</span>
+     <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)[</span><span class="n">col_salary</span><span class="p">]</span>
+     <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+     <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+     <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[108]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>count</th>
+    </tr>
+    <tr>
+      <th>¿En cuál de los siguientes lenguajes de programación ocupa la mayoría de su tiempo laboral?</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ruby</th>
+      <td>4232980</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>Objective-C</th>
+      <td>3948958</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Cobol</th>
+      <td>3779393</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>C#</th>
+      <td>3538389</td>
+      <td>194</td>
+    </tr>
+    <tr>
+      <th>Java</th>
+      <td>3376560</td>
+      <td>308</td>
+    </tr>
+    <tr>
+      <th>JavaScript</th>
+      <td>2785739</td>
+      <td>191</td>
+    </tr>
+    <tr>
+      <th>Python</th>
+      <td>2714838</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>PL/SQL</th>
+      <td>2580030</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>PHP</th>
+      <td>2274917</td>
+      <td>208</td>
+    </tr>
+    <tr>
+      <th>HTML/CSS</th>
+      <td>1816943</td>
+      <td>56</td>
     </tr>
   </tbody>
 </table>
