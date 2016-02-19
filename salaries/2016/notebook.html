@@ -182,16 +182,40 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
+<span class="n">USD_IN_COP</span> <span class="o">=</span> <span class="mi">3352</span> <span class="c1"># Feb 19. Source xe.com</span>
+
 <span class="n">col_language</span> <span class="o">=</span> <span class="s1">&#39;¿En cuál de los siguientes lenguajes de programación ocupa la mayoría de su tiempo laboral?&#39;</span>
-<span class="n">col_salary</span> <span class="o">=</span> <span class="s1">&#39;¿Cuanto es su salario ANUAL?&#39;</span>
+<span class="n">col_raw_salary</span> <span class="o">=</span> <span class="s1">&#39;¿Cuanto es su salario ANUAL?&#39;</span>
+<span class="n">col_currency</span> <span class="o">=</span> <span class="s1">&#39;¿A usted le pagan en pesos colombianos (COP) o dólares (USD)?&#39;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;normalized.csv&quot;</span><span class="p">)</span>
-<span class="n">by_language</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">col_salary</span> <span class="o">=</span> <span class="s1">&#39;salary_normalized&#39;</span>
+
+<span class="c1"># Normalize salaries to pesos</span>
+<span class="k">def</span> <span class="nf">normalize_salaries</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">sal</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">col_raw_salary</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="n">col_currency</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dolares&#39;</span><span class="p">:</span>
+        <span class="n">sal</span> <span class="o">=</span> <span class="n">sal</span> <span class="o">*</span> <span class="n">USD_IN_COP</span>
+    <span class="k">return</span> <span class="n">sal</span> <span class="o">//</span> <span class="mi">12</span>
+
+<span class="n">data</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalize_salaries</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -210,10 +234,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[97]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span class="n">by_language</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">col_language</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
      <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
      <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
@@ -227,7 +253,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[97]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -305,7 +331,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="p">(</span><span class="n">by_language</span><span class="p">[</span><span class="n">col_salary</span><span class="p">]</span>
@@ -323,7 +349,7 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[39]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[98]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
@@ -342,54 +368,54 @@ div#notebook {
   </thead>
   <tbody>
     <tr>
-      <th>Cobol</th>
-      <td>45352727</td>
-      <td>11</td>
+      <th>HTML/CSS</th>
+      <td>249740471</td>
+      <td>62</td>
     </tr>
     <tr>
-      <th>C#</th>
-      <td>41187697</td>
-      <td>200</td>
+      <th>JavaScript</th>
+      <td>183079976</td>
+      <td>228</td>
     </tr>
     <tr>
-      <th>Java</th>
-      <td>39745487</td>
-      <td>314</td>
+      <th>PHP</th>
+      <td>170143116</td>
+      <td>220</td>
     </tr>
     <tr>
       <th>Ruby</th>
-      <td>33235530</td>
+      <td>9168748</td>
       <td>52</td>
     </tr>
     <tr>
       <th>Objective-C</th>
-      <td>31604633</td>
+      <td>6254660</td>
       <td>18</td>
     </tr>
     <tr>
-      <th>PL/SQL</th>
-      <td>30960363</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>JavaScript</th>
-      <td>28651076</td>
-      <td>228</td>
-    </tr>
-    <tr>
       <th>Python</th>
-      <td>28061166</td>
+      <td>4525888</td>
       <td>36</td>
     </tr>
     <tr>
-      <th>PHP</th>
-      <td>26411375</td>
-      <td>220</td>
+      <th>Cobol</th>
+      <td>3779393</td>
+      <td>11</td>
     </tr>
     <tr>
-      <th>HTML/CSS</th>
-      <td>20581506</td>
-      <td>62</td>
+      <th>C#</th>
+      <td>3668140</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>Java</th>
+      <td>3590368</td>
+      <td>314</td>
+    </tr>
+    <tr>
+      <th>PL/SQL</th>
+      <td>2580030</td>
+      <td>11</td>
     </tr>
   </tbody>
 </table>
